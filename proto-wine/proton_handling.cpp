@@ -20,13 +20,13 @@ void get_steam_libs(QVector<QString> & outvector)
 
     /* Append outvector with default_steamlibs */
     outvector.append(default_steamlibs);
-    /*
+    /*            
      * Scan for other Steam libraries than the default ones above and add the paths to the Steam libraries vector
      */
     QFile libraryfile(librarycontainer);
     if (libraryfile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        const QRegularExpression nameExp("\"\\d+\"\\s+\"(.*)\"");
+        const QRegularExpression nameExp("\"path\"\\s+\"(.*)\"");
         QTextStream in(&libraryfile);
         QString line;
         while (in.readLineInto(&line)) {
